@@ -8,7 +8,7 @@ const serviceData = [
 		description: "Mauris finibus nisl ullamcorper purus sollicitudin laoreet. Cras sed feugiat velit, non faucibus nulla.",
 		image: "assets/img/services/1.jpg",
 		features: ["Email Marketing", "Product Marketing", "Promotion"],
-		link: "https://uithemez.com/i/artech/inner_pages/post.html",
+		link: "/service",
 	},
 	{
 		id: 2,
@@ -16,7 +16,7 @@ const serviceData = [
 		description: "Mauris finibus nisl ullamcorper purus sollicitudin laoreet. Cras sed feugiat velit, non faucibus nulla.",
 		image: "assets/img/services/2.jpg",
 		features: ["Email Marketing", "Product Marketing", "Promotion"],
-		link: "https://uithemez.com/i/artech/inner_pages/post.html",
+		link: "/service",
 	},
 	{
 		id: 3,
@@ -24,7 +24,7 @@ const serviceData = [
 		description: "Mauris finibus nisl ullamcorper purus sollicitudin laoreet. Cras sed feugiat velit, non faucibus nulla.",
 		image: "assets/img/services/3.jpg",
 		features: ["Email Marketing", "Product Marketing", "Promotion"],
-		link: "https://uithemez.com/i/artech/inner_pages/post.html",
+		link: "/service",
 	},
 	{
 		id: 4,
@@ -32,7 +32,7 @@ const serviceData = [
 		description: "Mauris finibus nisl ullamcorper purus sollicitudin laoreet. Cras sed feugiat velit, non faucibus nulla.",
 		image: "assets/img/services/1.jpg",
 		features: ["Email Marketing", "Product Marketing", "Promotion"],
-		link: "/",
+		link: "/service",
 	},
 ];
 
