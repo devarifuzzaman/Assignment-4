@@ -37,10 +37,10 @@ const AboutSection = () => {
 								<div className="text-content">
 									<div className="text fsz-16 cr-777 mt-40"> Mauris auctor nulla ut nisl rutrum fermentum. Suspendse consectetur turpis nec ligula iaculis dapibus. Pellentesue iaculis purus at nibh gravida condimentum.Suspendisse faucibus eros congue turpis vulputate interdum.</div>
 									<div className="text fsz-16 cr-777 mt-40"> <span className="cr-dark1 fw-bold"> Mauris tincidunt purus nulla, eget lacinia dui lacinia et. </span> Duis mattis elit at mollis facilisis. In efficitur nisl quam, consectetur ex egestas vel. Sed cursus enim vel finibus lobortis.</div>
-									<a href="/about"
+									<Link to="/about"
 									   className="cir-butn line-butn icon-175 mt-50 d-inline-flex">
 										<div className="cont"><span className="txt fsz-30"> About Us </span> <img  src="./assets/img/arrow.svg" alt="" className="arrow"/></div>
-									</a>
+									</Link>
 								</div>
 							</div>
 							<div className="col-lg-6 offset-lg-1">
