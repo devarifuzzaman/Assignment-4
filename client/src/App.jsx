@@ -6,15 +6,18 @@ import Service from "./pages/Service.jsx";
 import Contact from "./pages/Contact.jsx";
 import Blog from "./pages/Blog.jsx";
 import SingleBlogSec from "./components/blogPage/SingleBlogSec.jsx";
+import {Analytics} from "@vercel/analytics/react";
+
 // import Loader from "./components/Loader.jsx";
-import { Analytics } from "@vercel/analytics/react"
+
 
 const App = () => {
     return (
         <BrowserRouter>
-            <Analytics />
+            <Analytics/>
             {/*<Loader/>*/}
          <Routes>
+
              <Route path="/" element={<Home/>} />
              <Route path="/about" element={<About/>} />
              <Route path="/service" element={<Service/>} />
