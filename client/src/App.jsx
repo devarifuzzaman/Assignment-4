@@ -7,10 +7,12 @@ import Contact from "./pages/Contact.jsx";
 import Blog from "./pages/Blog.jsx";
 import SingleBlogSec from "./components/blogPage/SingleBlogSec.jsx";
 // import Loader from "./components/Loader.jsx";
+import { Analytics } from "@vercel/analytics/react"
 
 const App = () => {
     return (
         <BrowserRouter>
+            <Analytics />
             {/*<Loader/>*/}
          <Routes>
              <Route path="/" element={<Home/>} />
