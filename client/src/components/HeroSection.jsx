@@ -20,8 +20,8 @@ const HeroSection = () => {
 									<div className="text-row">Web Developer</div>
 
 								</h1>
-								<div className="text cr-777 fsz-21 fw-500 mt-50 col-lg-5 offset-lg-2"> <span
-									className="cr-dark1 d-inline"> Etiam sed odio dictum, </span> tempus velit non, sollicitudin neque. Donec quis aliquet velit. <span className="cr-dark1 d-inline"> Aliquam convallis dapibus purus. </span></div>
+								<div className="text cr-777 fsz-21 fw-500 mt-50 col-lg-8 offset-lg-2"> <span
+									className="cr-dark1 d-inline"> Our goal is to streamline your workflow,  making it faster and easier than ever before. </span>We aim to simplify complex tasks, saving you time and effort. <span className="cr-dark1 d-inline"> By leveraging innovative tools and solutions, we enhance productivity and efficiency. </span></div>
 							</div>
 						</div>
 						<div className="col-lg-5">
