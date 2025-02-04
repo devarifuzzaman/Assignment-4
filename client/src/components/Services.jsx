@@ -87,7 +87,7 @@ const Services = () => {
 										</div>
 									</div>
 									<div className="col-lg-2 w-auto">
-										<a href={service.link}
+										<Link to={service.link}
 											className="cir-butn line-butn icon-80 mt-50 d-inline-flex"
 										>
 											<div className="cont">
@@ -97,7 +97,7 @@ const Services = () => {
 													className="arrow"
 												/>
 											</div>
-										</a>
+										</Link>
 									</div>
 								</div>
 							</div>
