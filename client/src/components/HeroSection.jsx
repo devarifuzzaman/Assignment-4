@@ -3,18 +3,15 @@ import React from 'react';
 const HeroSection = () => {
 	return (
 		<>
-			<div className="tc-header-pr">
+			<div className="header-pr">
 				<div className="container">
 					<div className="row gx-lg-0">
 						<div className="col-lg-7">
 							<div className="content pt-150">
-								<div className="mini-img mb-40 offset-lg-6">
-									<img src="./assets/img/header_mini.jpg" alt="" className="img-cover"/>
-								</div>
 								<h1 className="bold">
 									<div className="text-row">
 										<div className="txt"> Hello, I'm Arifuzzaman Based in Bangladesh</div>
-										<img src="./assets/img/vec2.svg" alt="" className="shap"/> Creative
+										 Creative
 									</div>
 									<div className="text-row"> Full-Stack</div>
 									<div className="text-row">Web Developer</div>
@@ -31,8 +28,6 @@ const HeroSection = () => {
 						</div>
 					</div>
 				</div>
-				<img src="./assets/img/header_shaps.png" alt="" className="header-shaps"/>
-				<span className="float-txt"> alex smith </span>
 			</div>
 		</>
 	);

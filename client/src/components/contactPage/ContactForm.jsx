@@ -5,7 +5,16 @@ const ContactForm = () => {
 		<>
 
 
-			<section className="tc-map-st13">
+			<section className="contactform">
+				<div className="container projects portfolio-pr">
+					<div className="title ">
+						<div className="row align-items-center">
+							<div className="col-lg-12">
+								<h2 className="sub-font mb-10"> Contact </h2>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div className="map">
 					<iframe
 						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d233652.03622025767!2d88.55806463921284!3d23.78967013842915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f94a104fc1c02f%3A0xbac2303153cf2bb!2sMeherpur%20District%2C%20Bangladesh!5e0!3m2!1sen!2seg!4v1738587332423!5m2!1sen!2seg"

@@ -4,67 +4,58 @@ import  logo from '/logo.png';
 const Footer = () => {
 	return (
 		<>
-			<footer className="tc-footer-st1">
+			<footer className="footer">
 				<div className="main-footer">
 					<div className="container">
 						<div className="row">
 							<div className="col-lg-4">
 								<Link to="/" className="logo"> <img src="./assets/img/logo.png" alt=""/> </Link>
+								<ul className="contact-links py-3">
+									<li><a href="#" className="text-white fs-3"> +8801554422111 </a></li>
+									<li><a href="#" className="text-white fs-3"> info.example@gmail.com </a></li>
+								</ul>
 							</div>
 							<div className="col-lg-8">
-								<h5 className="fsz-30 text-capitalize mb-30"> Subscribe Now. </h5>
-								<div className="form-group">
-									<label htmlFor="" className="fsz-18 mb-10"> Your Mail </label>
-									<input type="text" className="form-control" placeholder="infoflex@info.com"/>
-									<button><img src="./assets/img/arrow_wh.svg" alt=""/></button>
+								<div className="row">
+									<div className="col">
+										<div className="links-group mt-5 mt-lg-0">
+											<h6 className="fsz-18 mb-30"> Top Links </h6>
+											<ul className="links text-white">
+												<li><Link to="/blog"> Blog </Link></li>
+												<li><Link to="/service"> SEO Agency </Link></li>
+												<li><Link to="/contact"> Company Report </Link></li>
+												<li><Link to="/contact"> Marketing </Link></li>
+											</ul>
+										</div>
+									</div>
+									<div className="col">
+										<div className="links-group mt-5 mt-lg-0">
+											<h6 className="fsz-18 mb-4"> More Service </h6>
+											<ul className="links">
+												<li><Link to="/about"> About us </Link></li>
+												<li><Link to="/service"> Portfolio </Link></li>
+												<li><Link to="/blog"> Privacy Policy </Link></li>
+												<li><Link to="/contact"> Contact us </Link></li>
+											</ul>
+										</div>
+									</div>
+									<div className="col">
+										<div className="links-group mt-5 mt-lg-0">
+											<h6 className="fsz-18 mb-4"> Address </h6>
+											<ul className="links">
+												<li><p>Meherpur <br/>Meherpur Sadar, Khulna </p></li>
+												<li><p className="opacity-100"> Bangladesh </p></li>
+											</ul>
+										</div>
+									</div>
 								</div>
 							</div>
+
 						</div>
 						<div className="links-wrapper">
-							<div className="row">
-								<div className="col-lg-5">
-									<ul className="contact-links">
-										<li><a href="#"> +555 4422 111 00 </a></li>
-										<li><a href="#"> info.artech@gmail.com </a></li>
-									</ul>
-								</div>
-								<div className="col-lg-2">
-									<div className="links-group mt-5 mt-lg-0">
-										<h6 className="fsz-18 mb-30"> Top Links </h6>
-										<ul className="links">
-											<li><Link to="/"> Corporate Business </Link></li>
-											<li><Link to="/"> SEO Agency </Link></li>
-											<li><Link to="/"> Company Report </Link></li>
-											<li><Link to="/"> Marketing </Link></li>
-										</ul>
-									</div>
-								</div>
-								<div className="col-lg-2">
-									<div className="links-group mt-5 mt-lg-0">
-										<h6 className="fsz-18 mb-4"> More Service </h6>
-										<ul className="links">
-											<li><Link to="/about"> About us </Link></li>
-											<li><Link to="/service"> Case Studies </Link></li>
-											<li><Link to="/"> Privacy Policy </Link></li>
-											<li><Link to="/contact"> Contact us </Link></li>
-										</ul>
-									</div>
-								</div>
-								<div className="col-lg-3">
-									<div className="links-group mt-5 mt-lg-0">
-										<h6 className="fsz-18 mb-4"> Address </h6>
-										<ul className="links">
-											<li><p>Meherpur <br/>Meherpur Sadar, Khulna </p></li>
-											<li><p className="opacity-100"> Bangladesh </p></li>
-										</ul>
-									</div>
-								</div>
-							</div>
+
 						</div>
 					</div>
-					<div className="lg-txt sub-font"> agency</div>
-					<img src="./assets/img/foot_shaps.png" alt="" className="foot-shapes"/>
-					<img src="./assets/img/fav_line.png" alt="" className="fav-line"/>
 				</div>
 				<div className="foot">
 					<div className="container">

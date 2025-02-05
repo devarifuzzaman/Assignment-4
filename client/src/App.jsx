@@ -5,7 +5,6 @@ import About from "./pages/About.jsx";
 import Service from "./pages/Service.jsx";
 import Contact from "./pages/Contact.jsx";
 import Blog from "./pages/Blog.jsx";
-import SingleBlogSec from "./components/blogPage/SingleBlogSec.jsx";
 // import Loader from "./components/Loader.jsx";
 
 
@@ -21,7 +20,7 @@ const App = () => {
              <Route path="/service" element={<Service/>} />
              <Route path="/contact" element={<Contact/>} />
              <Route path="/blog" element={<Blog/>} />
-             <Route path={"/singleBlogSec"}  element={<SingleBlogSec/>} />
+
          </Routes>
         </BrowserRouter>
     );

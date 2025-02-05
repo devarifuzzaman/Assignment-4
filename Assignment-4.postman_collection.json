@@ -1,0 +1,606 @@
+{
+	"info": {
+		"_postman_id": "e245013d-1242-4504-a493-59baec669610",
+		"name": "Assignment-4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38809131"
+	},
+	"item": [
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryName\": \"Development\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/createcategory",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"createcategory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Category",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/getcategory",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"getcategory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryName\":\"Careers\"\r\n   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/updatecategory/id",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"updatecategory",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryName\":\"Careers\"\r\n   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/deletecategory/id",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"deletecategory",
+								"id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Blog",
+			"item": [
+				{
+					"name": "Create Blog",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Mastering React in 2025: Tips & Best Practices\",\r\n    \"des\": \"Discover the latest best practices and expert tips to become proficient in React development in 2025.\",\r\n    \"image\": \"https://example.com/images/react-2025.jpg\",\r\n    \"categories\": \"67a23222d84f80b58f572ac4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/createblog",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"createblog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Blogs",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/getBlog",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"getBlog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Single blog",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/getblogbyid/id",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"getblogbyid",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Blog",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Mastering React in 2026: Tips,trics & Best Practices\",\r\n    \"des\": \"Discover the latest best practices and expert tips to become proficient in React development in 2025.\",\r\n    \"image\": \"https://example.com/images/react-2025.jpg\",\r\n    \"categories\": \"67a1d5d14ed2aeff099876cf\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/updateBlog/id",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"updateBlog",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Blog",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryName\":\"Careers\"\r\n   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/deleteBlog/id",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"deleteBlog",
+								"id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Service",
+			"item": [
+				{
+					"name": "Create Service",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Back-End Web Development with NodeJS\",\r\n    \"des\": \"Create most attractive website with Nodejs\",\r\n    \"link\":\"https://www.nodejs.com\",\r\n    \"image\": \"https://example.com/images/react-2025.jpg\",\r\n    \"categories\": \"67a215682d83878519cd2878\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/createservice",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"createservice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Services",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/getservice",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"getservice"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Single service",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/getservicebyid/id",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"getservicebyid",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Service",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Back-End Web Development with NodeJS\",\r\n    \"des\": \"Create most attractive website with Nodejs\",\r\n    \"link\":\"https://www.nodejs.com\",\r\n    \"image\": \"https://example.com/images/react-2025.jpg\",\r\n    \"categories\": \"67a23222d84f80b58f572ac4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/updateService/id",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"updateService",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Service",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryName\":\"Careers\"\r\n   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/deleteService/id",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"deleteService",
+								"id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Team Profile",
+			"item": [
+				{
+					"name": "Create Profile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"designation\": \"Full-Stack Developer\",\r\n    \"image\": \"https://example.com/images/john-doe.jpg\",\r\n    \"facebook\": \"https://facebook.com/johndoe\",\r\n    \"twitter\": \"https://twitter.com/johndoe\",\r\n    \"github\": \"https://github.com/johndoe\",\r\n    \"linkedin\": \"https://linkedin.com/in/johndoe\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/createProfile",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"createProfile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/getprofile",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"getprofile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"MD Arifuzzaman\",\r\n    \"designation\": \"Full-Stack Developer\",\r\n    \"image\": \"https://example.com/images/profile.jpg\",\r\n    \"facebook\": \"https://facebook.com/arif\",\r\n    \"twitter\": \"https://twitter.com/arif\",\r\n    \"github\": \"https://github.com/arif\",\r\n    \"linkedin\": \"https://linkedin.com/in/arif\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/updateProfile/id",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"updateProfile",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Profile",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE}}/deleteprofile/id",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"deleteprofile",
+								"id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"arif@gmail.com\",\r\n    \"password\":\"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/login",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/logout",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE",
+			"value": "http://localhost:5000/api",
+			"type": "string"
+		}
+	]
+}

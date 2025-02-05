@@ -10,9 +10,9 @@ const Navbar = ({ isMenuOpen, toggleMenu }) => {
 
 	return (
 		<>
-			<nav className="navbar navbar-expand-lg navbar-light tc-navbar-pr">
+			<nav className="navbar navbar-expand-lg navbar-light navbar-pr">
 				<div className="container-fluid p-0">
-					<Link to="/" className="logo th-60">
+					<Link to="/" className="logo th-60 px-4">
 						<img src={logo} alt="Logo"/>
 					</Link>
 					<button className="navbar-toggler" type="button" onClick={toggleNavbar} aria-expanded={isNavbarOpen} aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
