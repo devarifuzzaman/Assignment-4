@@ -20,7 +20,7 @@ export const LoginServices = async (req,res)=>{
 			// Set cookie
 			let options = {
 				maxAge:REQUEST_LIMIT_TIME ,
-				httpOnly: false, // Prevents client-side access to the cookie
+				httpOnly: true, // Prevents client-side access to the cookie
 				sameSite: "none", // Required for cross-site cookies
 				secure: true,
 				path:"/"
