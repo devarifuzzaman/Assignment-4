@@ -24,7 +24,7 @@ const SingleBlog = () => {
 
 					// Update the blog state with the fetched data
 					setBlog({
-						...result,
+						...result.data,
 						image: imageUrl,
 					});
 				} else {

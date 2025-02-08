@@ -28,6 +28,7 @@ const Blog = () => {
 					};
 				});
 
+
 				setBlogs([]); // Reset state before updating
 				setTimeout(() => setBlogs(updatedBlogs), 100);
 			} else {
@@ -217,6 +218,7 @@ const Blog = () => {
 							<td>{blog.title}</td>
 							<td>{blog.des}</td>
 							<td>
+								{console.log(blog.image,"image")}
 								{blog.image ? (
 									<img src={blog.image} alt="blogImg" className="w-[80px] h-[80px] object-cover"/>
 								) : (
