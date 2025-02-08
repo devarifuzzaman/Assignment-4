@@ -2,7 +2,7 @@ import {DeleteAlert, ErrorToast, SuccessToast} from "../helper/Helper.js";
 import axios from "axios";
 
 
-export const baseURL = "http://localhost:5000/api";
+export const baseURL = "https://assignment-4-server-sage.vercel.app/api";
 // User api call
 export const UserLogin = async (reqBody) => {
 	let result = await axios.post(`${baseURL}/login`, reqBody,{
