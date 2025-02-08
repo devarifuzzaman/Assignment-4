@@ -1,12 +1,12 @@
 import React from 'react';
 import MasterLayout from "../../components/dashboard/layout/MasterLayout.jsx";
 
-const Service = () => {
+const Team = () => {
 	return (
-		<MasterLayout title="Service">
-			service
+		<MasterLayout title="Team">
+			Team
 		</MasterLayout>
 	);
 };
 
-export default Service;
+export default Team;

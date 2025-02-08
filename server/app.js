@@ -7,13 +7,15 @@ import cookieParser from 'cookie-parser';
 import hpp from 'hpp';
 import router from './src/routes/api.js';
 import {DATABASE, MAX_JSON_SIZE, URL_ENCODED,WEB_CACHE, REQUEST_LIMIT_NUMBER, REQUEST_LIMIT_TIME, option} from './src/config/config.js';
-import upload from "./src/middleware/FileUpload.js";
 
 
 const app = express();
 
 // Global Application Middleware
-app.use(cors());
+app.use(cors({
+ credentials: true,
+ origin:true}));
+
 app.use(express.json({limit:MAX_JSON_SIZE}));
 app.use(express.urlencoded({ extended: URL_ENCODED }));
 app.use(hpp());
@@ -38,5 +40,9 @@ app.set('etag',WEB_CACHE);
  // Set API Route
 app.use("/api",router);
 
+
 app.use("/upload-file", express.static("uploads"));
+
+
+
 export default app;

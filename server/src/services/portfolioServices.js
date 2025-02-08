@@ -18,7 +18,7 @@ export const getPortfolioService = async (req, res) => {
 		let joinCategoryStage={$lookup:{from:'categories', localField:'categories', foreignField:"_id", as : 'category'}};
 		let unwindCategory= {$unwind: '$category'};
 		let projectionStage={$project:{'category._id':0,'categories':0}}
-
+		let count = await ServiceModel.countDocuments();
 		let data = await ServiceModel.aggregate([
 			joinCategoryStage,
 			unwindCategory,
@@ -26,10 +26,10 @@ export const getPortfolioService = async (req, res) => {
 		])
 
 		if (data.length===null) {
-			return { status: false, msg: "No Service available" };
+			return { status: false, msg: "No Service available",count: count };
 		}
 
-		return { status: true, data: data};
+		return { status: true, data: data,count: count };
 	} catch (e) {
 		return { status: false, error: e.toString(), msg: "Something went wrong." };
 	}

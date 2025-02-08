@@ -16,10 +16,11 @@ export const createCategoryService = async (req, res) => {
 export const getCategoryService = async (req, res) => {
 	try {
 		let data = await CategoryModel.find({});
+		let count = await CategoryModel.countDocuments();
 		if (data.length===null) {
-			return { status: false, msg: "No Category available" };
+			return { status: false, msg: "No Category available", count: count };
 		}
-		return { status: true, data: data };
+		return { status: true, data: data, count: count };
 	} catch (e) {
 		return { status: false, error: e.toString(), msg: "Something went wrong." };
 	}

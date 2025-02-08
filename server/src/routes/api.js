@@ -6,6 +6,8 @@ import * as CategoryController from "../controllers/CategoryController.js";
 import * as BlogController from "../controllers/BlogController.js";
 import * as ServiceController from "../controllers/ServiceController.js";
 import * as TeamProfileController from "../controllers/TeamProfileController.js";
+import * as FileUploadController from "../controllers/FileUploadController.js";
+import upload from "../middleware/FileUpload.js";
 
 
 // Users
@@ -41,5 +43,10 @@ router.delete('/deleteProfile/:id',AuthMiddleware,TeamProfileController.deleteTe
 
 
 
+
+
+
+// file routes
+router.post("/file-upload", AuthMiddleware, upload.array("files", 20), FileUploadController.fileUpload);
 
 export default router;

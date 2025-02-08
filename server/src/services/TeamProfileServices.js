@@ -18,10 +18,11 @@ export const CreateTeamProfileService = async (req, res) => {
 export const GetTeamProfileService = async (req, res) => {
 	try {
 		let data = await TeamProfileModel.find({});
+		let count = await TeamProfileModel.countDocuments();
 		if (data.length !== 0) {
-			return {status: true, data: data};
+			return {status: true, data: data,count: count};
 		} else {
-			return {status: false, msg: "No Team Profile available"};
+			return {status: false, msg: "No Team Profile available",count: count};
 		}
 	}catch(e){
 		return { status: false, error: e.toString(), msg: "Something went wrong." };
@@ -43,6 +44,7 @@ export const UpdateTeamProfileService = async (req, res) => {
 		return { status: false, error: e.toString(), msg: "Something went wrong." };
 	}
 }
+
 
 export const DeleteTeamProfileService = async (req, res) => {
 	try {

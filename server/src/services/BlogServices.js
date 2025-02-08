@@ -18,15 +18,16 @@ export const getBlogsService = async (req, res) => {
 		let joinCategoryStage={$lookup:{from:'categories', localField:'categories', foreignField:"_id", as : 'category'}};
 		let unwindCategory= {$unwind: '$category'};
 		let projectionStage={$project:{'category._id':0,'categories':0}}
+		let count = await BlogModel.countDocuments();
 		let data = await BlogModel.aggregate([
 			joinCategoryStage,
 			unwindCategory,
 			projectionStage
 		])
 		if (data.length !== null) {
-			return {status: true, data: data};
+			return {status: true, data: data,count: count};
 		} else {
-			return {status: false, msg: "No Blog available"};
+			return {status: false, msg: "No Blog available" ,count: count};
 		}
 	} catch (e) {
 		return { status: false, error: e.toString(), msg: "Something went wrong." };

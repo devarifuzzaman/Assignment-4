@@ -6,7 +6,7 @@ import {REQUEST_LIMIT_TIME} from "../config/config.js";
 export const LoginServices = async (req,res)=>{
 	try {
 		let reqBody = req.body;
-		let exitingUser = await UserModel.find({ email: reqBody.email });
+		let exitingUser = await UserModel.findOne({ email: reqBody.email });
 		if (!exitingUser) {
 			return { status: false, msg: "User not found." };
 		}
