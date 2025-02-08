@@ -1,0 +1,8 @@
+login from menu
+
+user login:
+
+user: arif@gmail.com
+pass: 1234
+
+other api calling methods are in postman file that included in github
