@@ -17,6 +17,13 @@ export const EMAIL_USER="info@teamrabbil.com"
 export const EMAIL_PASSWORD="~sR4[bhaC[Qs"
 export const EMAIL_AUTH=false
 
+// export const EMAIL_HOST="smtp.gmail.com"; // Gmail's SMTP server
+// export const EMAIL_PORT=587;
+// export const EMAIL_SECURITY="tls";
+// export const EMAIL_USER="arifujjaman42@gmail.com";
+// export const EMAIL_PASSWORD="@arifujjaman123";
+// export const EMAIL_AUTH=true; // Authentication is required for Gmail
+
 export const MAX_JSON_SIZE = "50mb";
 export const URL_ENCODED = true;
 

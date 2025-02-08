@@ -1,11 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { baseURL, GetProfile } from "../../Api/ApiRoute.js";
 
 const Team = () => {
+	const [profile, setProfile] = useState([]);
+
+	useEffect(() => {
+		fetchProfile();
+	}, []);
+
+	const fetchProfile = async () => {
+		try {
+			const result = await GetProfile();
+			if (result) {
+				const updatedProfile = result.data.map(profile => ({
+					...profile,
+					image: profile.image ? `${baseURL.replace("/api", "/upload-file")}/${profile.image}` : "assets/img/default.jpg"
+				}));
+				setProfile(updatedProfile);
+			} else {
+				console.error("Failed to fetch profile:", result?.msg);
+			}
+		} catch (error) {
+			console.error("Error fetching profile:", error);
+		}
+	};
+
 	return (
 		<>
 			<section className="team">
 				<div className="container projects portfolio-pr">
-					<div className="title ">
+					<div className="title">
 						<div className="row align-items-center">
 							<div className="col-lg-12">
 								<h2 className="sub-font mb-10"> About </h2>
@@ -19,84 +43,27 @@ const Team = () => {
 					</div>
 					<div className="cards">
 						<div className="row">
-							<div className="col-lg-3">
-								<div className="team-card">
-									<div className="img">
-										<img src="assets/img/team/t1.jpg" alt="" className="img-cover"/>
-									</div>
-									<div className="info">
-										<div className="social-icons">
-											<a href="#" className="link"> <i className="fab fa-facebook-f"></i> </a>
-											<a href="#" className="link"> <i className="fab fa-x-twitter"></i> </a>
-											<a href="#" className="link"> <i className="fab fa-linkedin-in"></i> </a>
-											<a href="#" className="link"> <i className="fab fa-instagram"></i> </a>
+							{profile.map((profileItem, index) => (
+								<div className="col-lg-3" key={index}>
+									<div className="team-card">
+										<div className="img">
+											<img src={profileItem.image} alt={profileItem.name} className="img-cover" />
 										</div>
-										<p className="fsz-16 cr-777 mb-2"> Web Developer </p>
-										<h6 className="fsz-24 fw-500 text-capitalize"> Thomas tatum </h6>
+										<div className="info">
+											<div className="social-icons">
+												<a href={profileItem.facebook} className="link"> <i className="fab fa-facebook-f"></i> </a>
+												<a href={profileItem.twitter} className="link"> <i className="fab fa-x-twitter"></i> </a>
+												<a href={profileItem.linkedin} className="link"> <i className="fab fa-linkedin-in"></i> </a>
+												<a href={profileItem.github} className="link"> <i className="fab fa-github"></i> </a>
+											</div>
+											<p className="fsz-16 cr-777 mb-2"> {profileItem.designation || "Role Empty"} </p>
+											<h6 className="fsz-24 fw-500 text-capitalize"> {profileItem.name || "Unknown"} </h6>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div className="col-lg-3">
-								<div className="team-card">
-									<div className="img">
-										<img src="assets/img/team/t2.jpg" alt="" className="img-cover"/>
-									</div>
-									<div className="info">
-										<div className="social-icons">
-											<a href="#" className="link"> <i className="fab fa-facebook-f"></i> </a>
-											<a href="#" className="link"> <i className="fab fa-x-twitter"></i> </a>
-											<a href="#" className="link"> <i className="fab fa-linkedin-in"></i> </a>
-											<a href="#" className="link"> <i className="fab fa-instagram"></i> </a>
-
-										</div>
-										<p className="fsz-16 cr-777 mb-2"> Branding Design </p>
-										<h6 className="fsz-24 fw-500 text-capitalize"> Ulises Urijah </h6>
-									</div>
-								</div>
-							</div>
-							<div className="col-lg-3">
-								<div className="team-card">
-									<div className="img">
-										<img src="assets/img/team/t3.jpg" alt="" className="img-cover"/>
-									</div>
-									<div className="info">
-										<div className="social-icons">
-											<a href="#" className="link"> <i className="fab fa-facebook-f"></i> </a>
-											<a href="#" className="link"> <i className="fab fa-x-twitter"></i> </a>
-											<a href="#" className="link"> <i className="fab fa-linkedin-in"></i> </a>
-											<a href="#" className="link"> <i className="fab fa-instagram"></i> </a>
-
-										</div>
-										<p className="fsz-16 cr-777 mb-2"> Digital Product </p>
-										<h6 className="fsz-24 fw-500 text-capitalize"> Landon Legend </h6>
-									</div>
-								</div>
-							</div>
-							<div className="col-lg-3">
-								<div className="team-card">
-									<div className="img">
-										<img src="assets/img/team/t4.jpg" alt="" className="img-cover"/>
-									</div>
-									<div className="info">
-										<div className="social-icons">
-											<a href="#" className="link"> <i className="fab fa-facebook-f"></i> </a>
-											<a href="#" className="link"> <i className="fab fa-x-twitter"></i> </a>
-											<a href="#" className="link"> <i className="fab fa-linkedin-in"></i> </a>
-											<a href="#" className="link"> <i className="fab fa-instagram"></i> </a>
-
-										</div>
-										<p className="fsz-16 cr-777 mb-2"> UX - UI Designer </p>
-										<h6 className="fsz-24 fw-500 text-capitalize"> Ursel Urbane </h6>
-									</div>
-								</div>
-							</div>
+							))}
 						</div>
 					</div>
-					{/*<a href="../inner_pages/careers.html" className="cir-butn line-butn wow fadeIn slow"*/}
-					{/*   data-wow-delay="0.2s">*/}
-					{/*	<div className="cont"><span className="txt"> Join Our Team </span> <img*/}
-					{/*		src="assets/img/arrow.svg" alt="" className="arrow"/></div>*/}
-					{/*</a>*/}
 				</div>
 			</section>
 		</>

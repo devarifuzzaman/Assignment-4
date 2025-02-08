@@ -12,6 +12,7 @@ const Blog = () => {
 	const [blogCategory, setBlogCategory] = useState("");
 	const [editId, setEditId] = useState(null);
 	const inputRef = useRef(null);
+	const fileInputRef = useRef(null);
 	const [currentPage, setCurrentPage] = useState(1);
 	const blogsPerPage = 10;
 
@@ -23,10 +24,9 @@ const Blog = () => {
 				const updatedBlogs = result.data.map(blog => {
 					return {
 						...blog,
-						image: blog.image ? `${baseURL.replace("/api", "")}/upload-file/${blog.image}` : null
+						image: blog.image ? `${baseURL.replace("/api","/upload-file")}/${blog.image}` : null
 					};
 				});
-
 
 				setBlogs([]); // Reset state before updating
 				setTimeout(() => setBlogs(updatedBlogs), 100);
@@ -99,7 +99,7 @@ const Blog = () => {
 		const blogData = {
 			title: blogTitle,
 			des: blogDescription,
-			image: imageUrl,
+			image: imageUrl.split("/").pop(),
 			categories: blogCategory,
 		};
 
@@ -161,6 +161,9 @@ const Blog = () => {
 		setBlogDescription("");
 		setBlogImage(null);
 		setBlogCategory("");
+		if (fileInputRef.current) {
+			fileInputRef.current.value = "";
+		}
 	};
 	// Pagination calculations
 	const indexOfLastBlog = currentPage * blogsPerPage;
@@ -181,7 +184,7 @@ const Blog = () => {
 				</div>
 				<div className="mb-3">
 					<label className="form-label">Upload Image</label>
-					<input type="file" className="form-control" onChange={handleImageUpload} />
+					<input type="file" ref={fileInputRef} className="form-control" onChange={handleImageUpload} />
 				</div>
 				<div className="mb-3">
 					<label className="form-label">Category</label>
@@ -214,11 +217,12 @@ const Blog = () => {
 							<td>{blog.title}</td>
 							<td>{blog.des}</td>
 							<td>
-								<img src={blog.image} alt="blogImg" className='w-[80px] h-[80px] object-cover'/>
+								{blog.image ? (
+									<img src={blog.image} alt="blogImg" className="w-[80px] h-[80px] object-cover"/>
+								) : (
+									<span>No Image</span>
+								)}
 							</td>
-
-
-
 
 							<td>{blog.category?.categoryName}</td>
 							<td className="d-flex">

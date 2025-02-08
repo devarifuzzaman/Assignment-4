@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MasterLayout from "../../components/dashboard/layout/MasterLayout.jsx";
-import { ReadCategory, GetBlog } from "../../Api/ApiRoute.js"; // Make sure to add the new imports
+import {ReadCategory, GetBlog, GetService, GetProfile} from "../../Api/ApiRoute.js"; // Make sure to add the new imports
 
 const Home = () => {
 	const [categoryCount, setCategoryCount] = useState(0);
@@ -22,12 +22,12 @@ const Home = () => {
 				}
 
 				// Fetch Service Count
-				// const serviceResult = await ReadService();
-				// if (serviceResult.status) {
-				// 	setServiceCount(serviceResult.count);
-				// } else {
-				// 	setError("Failed to fetch services: " + serviceResult.msg);
-				// }
+				const serviceResult = await GetService();
+				if (serviceResult.status) {
+					setServiceCount(serviceResult.count);
+				} else {
+					setError("Failed to fetch services: " + serviceResult.msg);
+				}
 
 				// Fetch Blog Count
 				const blogResult = await GetBlog();
@@ -38,12 +38,12 @@ const Home = () => {
 				}
 
 				// Fetch Team Count
-				// const teamResult = await ReadTeam();
-				// if (teamResult.status) {
-				// 	setTeamCount(teamResult.count);
-				// } else {
-				// 	setError("Failed to fetch team members: " + teamResult.msg);
-				// }
+				const teamResult = await GetProfile();
+				if (teamResult.status) {
+					setTeamCount(teamResult.count);
+				} else {
+					setError("Failed to fetch team members: " + teamResult.msg);
+				}
 
 			} catch (error) {
 				setError("An error occurred while fetching data.");

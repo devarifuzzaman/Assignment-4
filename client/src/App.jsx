@@ -13,6 +13,8 @@ import DasBlog from "./pages/dashboard/Blog.jsx";
 import DasService from "./pages/dashboard/Service.jsx";
 import {Toaster} from "react-hot-toast";
 import Team from "./pages/dashboard/Team.jsx";
+import SingleBlog from "./components/SingleBlog.jsx";
+
 
 
 const App = () => {
@@ -27,6 +29,7 @@ const App = () => {
              <Route path="/service" element={<Service/>} />
              <Route path="/contact" element={<Contact/>} />
              <Route path="/blog" element={<Blog/>} />
+             <Route path="/singleBlog/:id" element={<SingleBlog/>} />
              <Route path="/login" element={<Login/>} />
 
             //Private Route
