@@ -15,8 +15,8 @@ const app = express();
 app.use(cors({
  credentials: true,
  origin:[
-     "https://assignment-4-psi-seven.vercel.app/",
-     "http://localhost:5173/"
+     "https://assignment-4-psi-seven.vercel.app",
+     "http://localhost:5173"
  ]}));
 
 app.use(express.json({limit:MAX_JSON_SIZE}));
