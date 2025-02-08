@@ -14,7 +14,10 @@ const app = express();
 // Global Application Middleware
 app.use(cors({
  credentials: true,
- origin:true}));
+ origin:[
+     "https://assignment-4-psi-seven.vercel.app/",
+     "http://localhost:5173/"
+ ]}));
 
 app.use(express.json({limit:MAX_JSON_SIZE}));
 app.use(express.urlencoded({ extended: URL_ENCODED }));
