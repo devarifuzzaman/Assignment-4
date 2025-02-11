@@ -10,7 +10,7 @@ export default defineConfig({
         target: "https://assignment-4-server-sage.vercel.app", //for backend live
         // target: "http://localhost:5000", //for localhost
         changeOrigin: true,
-        secure: false,
+        secure: true,
       },
     },
   }
