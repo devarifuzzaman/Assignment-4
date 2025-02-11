@@ -15,8 +15,7 @@ const app = express();
 // Global Application Middleware
 app.use(cors({
  credentials: true,
- origin:["http://localhost:5173","https://assignment-4-o4o9.vercel.app"],
- methods: ["GET", "POST", "PUT", "DELETE"]
+ origin:["http://localhost:5173","https://assignment-4-o4o9.vercel.app"]
 }));
 
 app.use(express.json({limit:MAX_JSON_SIZE}));
