@@ -7,7 +7,7 @@ const BlogSection = () => {
 	const blogsPerPage = 6; // Adjusted for better layout
 
 	useEffect(() => {
-		fetchBlogs();
+		fetchBlogs().then(fetchBlogs);
 	}, []);
 
 	const fetchBlogs = async () => {

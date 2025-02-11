@@ -4,12 +4,11 @@ import { GetSingleBlog, baseURL } from "../Api/ApiRoute.js";
 
 const SingleBlog = () => {
 	const { id } = useParams();
-	const [blog, setBlog] = useState(null);
+	const [blog, setBlog] = useState();
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
-		console.log("Blog ID from URL:", id); // Debugging ID
 
 		const fetchBlog = async () => {
 			try {
@@ -24,9 +23,10 @@ const SingleBlog = () => {
 
 					// Update the blog state with the fetched data
 					setBlog({
-						...result.data,
+						...result.data.data[0],
 						image: imageUrl,
 					});
+
 				} else {
 					setError("Blog not found or invalid data format");
 				}
@@ -37,8 +37,7 @@ const SingleBlog = () => {
 				setLoading(false);
 			}
 		};
-
-		fetchBlog();
+		fetchBlog().then(fetchBlog);
 	}, [id]);
 
 	// Render loading state
@@ -68,7 +67,7 @@ const SingleBlog = () => {
 						<div className="blog-detail">
 							<img
 								src={blog.image}
-								alt={blog.title}
+								alt="No blog image"
 								className="img-fluid rounded mb-4"
 							/>
 							<h2 className="title mb-3">{blog.title}</h2>

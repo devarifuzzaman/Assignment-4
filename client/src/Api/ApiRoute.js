@@ -176,8 +176,9 @@ export const GetSingleBlog = async (id) => {
 		let result = await axios.get(`${baseURL}/getblogbyid/${id}`,{
 			withCredentials: true,
 		});
-		console.log("api",result)
-		return result.data;
+
+
+		return { status: true, data: result.data };
 	} catch (error) {
 		console.error("Error fetching categories:", error);
 		return { status: false, data: [] };
@@ -435,6 +436,3 @@ export const FileUpload = async (formData) => {
 		return false;
 	}
 };
-
-export class SingleBlog {
-}
