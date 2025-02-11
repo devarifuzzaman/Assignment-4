@@ -7,8 +7,8 @@ export default defineConfig({
   server:{
     proxy: {
       "/api": {
-        // target: "https://assignment-4-server-sage.vercel.app", //for backend live
-        target: "http://localhost:5000", //for localhost
+        target: "https://assignment-4-server-sage.vercel.app", //for backend live
+        // target: "http://localhost:5000", //for localhost
         changeOrigin: true,
         secure: false,
       },
