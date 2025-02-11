@@ -1,4 +1,4 @@
-import {LoginServices, LogOutService} from "../services/UserServices.js";
+import {ContactService, LoginServices, LogOutService} from "../services/UserServices.js";
 
 
 export const Login= async (req, res)=>{
@@ -12,5 +12,8 @@ export const logOut = async (req, res) => {
 	return res.json(result);
 };
 
-
+export const contactEmail= async (req,res)=>{
+	let result = await ContactService(req,res);
+	return res.json(result);
+}
 

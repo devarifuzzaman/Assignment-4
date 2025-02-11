@@ -13,7 +13,7 @@ import upload from "../middleware/FileUpload.js";
 // Users
 router.post('/Login',UserController.Login);
 router.get('/Logout',AuthMiddleware,UserController.logOut);
-// router.post('/contact',UserController.contactEmail);
+router.post('/contact',UserController.contactEmail);
 
 // category Route
 router.post('/createCategory',AuthMiddleware,CategoryController.createCategory);

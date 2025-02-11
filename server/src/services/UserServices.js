@@ -1,6 +1,7 @@
 import UserModel from "../models/UserModel.js";
 import {TokenEncode} from "../utility/tokenUtility.js";
 import {REQUEST_LIMIT_TIME} from "../config/config.js";
+import sendEmail from "../utility/emailUtility.js";
 
 
 export const LoginServices = async (req,res)=>{
@@ -47,3 +48,17 @@ export const LogOutService= async (req,res)=>{
 
 }
 
+
+export const ContactService= async (req,res)=>{
+	try {
+		const {firstName, lastName, email, phone, message} = req.body;
+
+		if (!firstName || !lastName || !email || !phone || !message) {
+			return res.status(400).json({success: false, message: "All fields are required."});
+		}
+		const emailResponse = await sendEmail({firstName, lastName, email, phone, message});
+		return {status: true, msg: "Contact success.",data: emailResponse};
+	}catch(e){
+		return { status: false, msg: "Something went wrong." };
+	}
+}
