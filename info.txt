@@ -5,4 +5,7 @@ user login:
 user: arif@gmail.com
 pass: 1234
 
-other api calling methods are in postman file that included in github
+other api calling methods are in postman file that included in GitHub
+
+
+To create Blog,Services,Team use the localhost. In vercel it won't provide any upload file storage so file can't upload in live vercel, but you can upload in local host.

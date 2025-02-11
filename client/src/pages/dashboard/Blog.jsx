@@ -24,7 +24,8 @@ const Blog = () => {
 				const updatedBlogs = result.data.map(blog => {
 					return {
 						...blog,
-						image: blog.image ? `${baseURL.replace("/api","/upload-file")}/${blog.image}` : null
+						// image: blog.image ? `${baseURL.replace("/api","/upload-file")}/${blog.image}` : null
+						image: blog.image ? `${"http://localhost:5000/upload-file"}/${blog.image}` : null
 					};
 				});
 
