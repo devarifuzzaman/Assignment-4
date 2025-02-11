@@ -22,7 +22,7 @@ const Login = () => {
 			ErrorToast("Password is required.");
 		} else {
 			let result = await UserLogin(data);
-			if (result === true) {
+			if (result) {
 				// Navigate to the login page
 				navigate("/dashboard");
 			}

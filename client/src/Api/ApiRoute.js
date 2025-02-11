@@ -2,7 +2,7 @@ import {DeleteAlert, ErrorToast, SuccessToast} from "../helper/Helper.js";
 import axios from "axios";
 
 
-export const baseURL = "http://localhost:5000/api";
+export const baseURL = "https://assignment-4-server-sage.vercel.app/api";
 // User api call
 export const UserLogin = async (reqBody) => {
 	let result = await axios.post(`${baseURL}/login`, reqBody,{
@@ -420,9 +420,6 @@ export const FileUpload = async (formData) => {
 			withCredentials: true,
 		});
 
-		console.log("File Upload Response:", result.data); // Debugging
-
-		// Ensure the response is valid and contains file information
 		if (result.data?.status && Array.isArray(result.data.file) && result.data.file.length > 0) {
 			return {
 				status: true,
@@ -433,7 +430,6 @@ export const FileUpload = async (formData) => {
 			return false;
 		}
 	} catch (error) {
-		console.error("Upload Error:", error.response?.data || error.message);
 		ErrorToast("File upload failed. Please try again.");
 		return false;
 	}
