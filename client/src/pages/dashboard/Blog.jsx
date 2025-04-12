@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import MasterLayout from "../../components/dashboard/layout/MasterLayout.jsx";
-import {CreateBlog, UpdateBlog, deleteBlog, GetBlog, ReadCategory, FileUpload, baseURL} from "../../Api/ApiRoute.js";
+import { CreateBlog, UpdateBlog, deleteBlog, GetBlog, ReadCategory, FileUpload, imgUrl } from "../../Api/ApiRoute.js";
 import { IsEmpty } from "../../helper/Helper.js";
 
 const Blog = () => {
@@ -11,61 +11,53 @@ const Blog = () => {
 	const [blogImage, setBlogImage] = useState(null);
 	const [blogCategory, setBlogCategory] = useState("");
 	const [editId, setEditId] = useState(null);
-	const inputRef = useRef(null);
-	const fileInputRef = useRef(null);
 	const [currentPage, setCurrentPage] = useState(1);
 	const blogsPerPage = 10;
 
+	const inputRef = useRef(null);
+	const fileInputRef = useRef(null);
+
 	// Fetch blogs and categories
+	useEffect(() => {
+		fetchBlogs();
+		fetchCategories();
+	}, []);
+
 	const fetchBlogs = async () => {
 		try {
 			const result = await GetBlog();
-			if (result) {
-				const updatedBlogs = result.data.map(blog => {
-					return {
-						...blog,
-						image: blog.image ? `${baseURL.replace("/api","/upload-file")}/${blog.image}` : null
-						// image: blog.image ? `${"http://localhost:5000/upload-file"}/${blog.image}` : null
-					};
-				});
-
-
-				setBlogs([]); // Reset state before updating
-				setTimeout(() => setBlogs(updatedBlogs), 100);
+			console.log("Blogs fetched:", result); // Debugging: Log the result
+			if (result?.status) {
+				setBlogs(result.data);
 			} else {
-				console.error("Failed to fetch blogs:", result.msg);
+				console.error("Failed to fetch blogs:", result?.msg);
 			}
 		} catch (error) {
 			console.error("Error fetching blogs:", error);
 		}
 	};
 
-
 	const fetchCategories = async () => {
 		try {
 			const result = await ReadCategory();
+			console.log("Categories fetched:", result); // Debugging: Log the result
 			if (result?.status) {
 				setCategories(result.data);
 			} else {
-				console.error("Failed to fetch categories:", result.msg);
+				console.error("Failed to fetch categories:", result?.msg);
 			}
 		} catch (error) {
 			console.error("Error fetching categories:", error);
 		}
 	};
 
-	useEffect(() => {
-		fetchBlogs();
-		fetchCategories();
-	}, []);
-
 	// Handle image upload
 	const handleImageUpload = (e) => {
 		const file = e.target.files[0];
 		if (file) {
 			setBlogImage(file);
+			console.log("Image selected:", file); // Debugging: Log the selected file
 		}
-		console.log("Selected file:", file);
 	};
 
 	// Handle form submission
@@ -86,10 +78,11 @@ const Blog = () => {
 
 			try {
 				const uploadResponse = await FileUpload(formData);
-				if (uploadResponse) {
+				console.log("Image upload response:", uploadResponse); // Debugging: Log the upload response
+				if (uploadResponse?.status) {
 					imageUrl = uploadResponse.url;
 				} else {
-					console.error("Image upload failed");
+					console.error("Image upload failed:", uploadResponse?.msg);
 					return;
 				}
 			} catch (error) {
@@ -101,29 +94,27 @@ const Blog = () => {
 		const blogData = {
 			title: blogTitle,
 			des: blogDescription,
-			image: imageUrl.split("/").pop(),
+			image: imageUrl.split("/").pop(), // Extract the filename from the URL
 			categories: blogCategory,
 		};
 
 		try {
+			let response;
 			if (editId) {
 				// Update existing blog
-				const updated = await UpdateBlog(editId, blogData);
-				if (updated) {
-					resetForm();
-					await fetchBlogs();
-				} else {
-					console.error("Update failed:", updated?.msg);
-				}
+				response = await UpdateBlog(editId, blogData);
+				console.log("Update response:", response); // Debugging: Log the update response
 			} else {
 				// Create new blog
-				const created = await CreateBlog(blogData);
-				if (created) {
-					resetForm();
-					await fetchBlogs();
-				} else {
-					console.error("Creation failed:", created?.msg);
-				}
+				response = await CreateBlog(blogData);
+				console.log("Create response:", response); // Debugging: Log the create response
+			}
+
+			if (response?.status) {
+				resetForm();
+				await fetchBlogs();
+			} else {
+				console.error("Operation failed:", response?.msg);
 			}
 		} catch (error) {
 			console.error("Error processing request:", error);
@@ -138,15 +129,15 @@ const Blog = () => {
 		setBlogImage(blog.image);
 		setBlogCategory(blog.category._id);
 		inputRef.current.focus();
-
-		console.log("Editing blog:", blog);
+		console.log("Editing blog:", blog); // Debugging: Log the blog being edited
 	};
 
 	// Handle delete
 	const handleDelete = async (id) => {
 		try {
 			const deleted = await deleteBlog(id);
-			if (deleted) {
+			console.log("Delete response:", deleted); // Debugging: Log the delete response
+			if (deleted?.status) {
 				await fetchBlogs();
 			} else {
 				console.error("Failed to delete:", deleted?.msg);
@@ -166,7 +157,9 @@ const Blog = () => {
 		if (fileInputRef.current) {
 			fileInputRef.current.value = "";
 		}
+		console.log("Form reset"); // Debugging: Log form reset
 	};
+
 	// Pagination calculations
 	const indexOfLastBlog = currentPage * blogsPerPage;
 	const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
@@ -219,14 +212,12 @@ const Blog = () => {
 							<td>{blog.title}</td>
 							<td>{blog.des}</td>
 							<td>
-								{console.log(blog.image,"image")}
 								{blog.image ? (
-									<img src={blog.image} alt="blogImg" className="w-[80px] h-[80px] object-cover"/>
+									<img src={`${imgUrl}${blog.image}`} alt="blogImg" className="object-cover" width={80} height={60} />
 								) : (
 									<span>No Image</span>
 								)}
 							</td>
-
 							<td>{blog.category?.categoryName}</td>
 							<td className="d-flex">
 								<button onClick={() => handleEdit(blog)} className="btn btn-sm btn-warning"><i className="fas fa-edit"></i></button>
@@ -240,7 +231,7 @@ const Blog = () => {
 
 			{/* Pagination controls */}
 			<nav aria-label="Page navigation">
-				<ul className="pagination mx-auto justify-content-center pt-3 pb-5 ">
+				<ul className="pagination mx-auto justify-content-center pt-3 pb-5">
 					<li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
 						<button className="page-link" onClick={() => setCurrentPage(currentPage - 1)} aria-label="Previous">
 							<span aria-hidden="true">&laquo;</span>

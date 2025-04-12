@@ -10,7 +10,7 @@ const ContactForm = () => {
 		message: "",
 	});
 
-	const [submitting, setSubmitting] = useState(false);
+	const [submitting, setSubmitting] = useState();
 	const [message, setMessage] = useState("");
 
 	const handleChange = (e) => {
@@ -69,7 +69,7 @@ const ContactForm = () => {
 
 				<div className="contact-form col-lg-7">
 					<h5 className="fsz-30">Contact Us</h5>
-					<form onSubmit={handleSubmit}>
+					<div >
 						<div className="row">
 							<div className="col-lg-6">
 								<div className="form-group mt-4">
@@ -138,9 +138,8 @@ const ContactForm = () => {
 							</div>
 							<div className="col-lg-12">
 								<button
-									type="submit"
 									className="butn bg-dark1 fsz-16 text-white py-3 mt-50 hover-bg-orange1"
-									disabled={submitting}
+									onClick={handleSubmit}
 								>
 									<span>
 										{submitting ? "Submitting..." : "Submit Now"}
@@ -158,7 +157,7 @@ const ContactForm = () => {
 								</div>
 							)}
 						</div>
-					</form>
+					</div>
 				</div>
 			</div>
 		</section>

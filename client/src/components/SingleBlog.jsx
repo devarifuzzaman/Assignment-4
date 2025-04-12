@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { GetSingleBlog, baseURL } from "../Api/ApiRoute.js";
+import { GetSingleBlog, imgUrl } from "../Api/ApiRoute.js";
 
 const SingleBlog = () => {
 	const { id } = useParams();
@@ -13,20 +13,12 @@ const SingleBlog = () => {
 		const fetchBlog = async () => {
 			try {
 				const result = await GetSingleBlog(id);
-				// console.log("API Response:", result); // Debugging API Response
-
 				if (result) {
-					// Construct the image URL
-					const imageUrl = result.image
-						? `${baseURL.replace("/api", "/upload-file")}/${result.data.image}`
-						: "assets/img/default.jpg";
 
 					// Update the blog state with the fetched data
 					setBlog({
-						...result.data.data[0],
-						image: imageUrl,
+						...result.data.data[0]
 					});
-
 				} else {
 					setError("Blog not found or invalid data format");
 				}
@@ -36,8 +28,9 @@ const SingleBlog = () => {
 			} finally {
 				setLoading(false);
 			}
+
 		};
-		fetchBlog().then(fetchBlog);
+		fetchBlog().then();
 	}, [id]);
 
 	// Render loading state
@@ -65,12 +58,11 @@ const SingleBlog = () => {
 							← Back to Blogs
 						</Link>
 						<div className="blog-detail">
-							<img
-								src={blog.image}
+							<img src={imgUrl+blog.image}
 								alt="No blog image"
 								className="img-fluid rounded mb-4"
 							/>
-							<h2 className="title mb-3">{blog.title}</h2>
+							<h2 className="title mb-3">{blog.title || "No Tittle Available"}</h2>
 							<p className="text-muted mb-4">
 								{blog.des || "No description available."}
 							</p>

@@ -21,7 +21,7 @@ export const LoginServices = async (req,res)=>{
 			// Set cookie
 			let options = {
 				maxAge:REQUEST_LIMIT_TIME ,
-				httpOnly: true, // Prevents client-side access to the cookie
+				httpOnly: false, // Prevents client-side access to the cookie
 				sameSite: "none", // Required for cross-site cookies
 				secure: true,
 				path:"/"
@@ -49,16 +49,39 @@ export const LogOutService= async (req,res)=>{
 }
 
 
-export const ContactService= async (req,res)=>{
-	try {
-		const {firstName, lastName, email, phone, message} = req.body;
 
+
+
+
+export const ContactService = async (req, res) => {
+	try {
+		const { firstName, lastName, email, phone, message } = req.body;
+
+		// Validate Input
 		if (!firstName || !lastName || !email || !phone || !message) {
-			return res.status(400).json({success: false, message: "All fields are required."});
+			return res.status(400).json({ status: false, message: "All fields are required." });
 		}
-		const emailResponse = await sendEmail({firstName, lastName, email, phone, message});
-		return {status: true, msg: "Contact success.",data: emailResponse};
-	}catch(e){
-		return { status: false, msg: "Something went wrong." };
+
+		// Send Email
+		const emailResponse = await sendEmail({ firstName, lastName, email, phone, message });
+
+		// ✅ Ensure emailResponse is JSON-safe
+		return res.status(emailResponse.success ? 200 : 500).json({
+			status: emailResponse.success,
+			message: emailResponse.message,
+			data: {
+				messageId: emailResponse.messageId,
+				accepted: emailResponse.accepted,
+				rejected: emailResponse.rejected,
+				response: emailResponse.response,
+			},
+		});
+	} catch (error) {
+		console.error("Error in ContactService:", error);
+		return res.status(500).json({
+			status: false,
+			message: "Something went wrong.",
+			error: error.message || "Unknown error",
+		});
 	}
-}
+};

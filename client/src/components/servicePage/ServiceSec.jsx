@@ -1,24 +1,23 @@
 import React, {useEffect, useState} from 'react';
-import {baseURL, GetService} from "../../Api/ApiRoute.js";
+import {imgUrl, GetService} from "../../Api/ApiRoute.js";
 
 const ServiceSec = () => {
-	const [service, setservice] = useState([]);
+	const [service, setService] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
 	const servicePerPage = 6; // Adjusted for better layout
 
 	useEffect(() => {
-		fetchservice();
+		fetchService().then();
 	}, []);
 
-	const fetchservice = async () => {
+	const fetchService = async () => {
 		try {
 			const result = await GetService();
 			if (result) {
-				const updatedservice = result.data.map(service => ({
-					...service,
-					image: service.image ? `${baseURL.replace("/api", "/upload-file")}/${service.image}` : "assets/img/default.jpg"
+				const updatedService = result.data.map(service => ({
+					...service
 				}));
-				setservice(updatedservice);
+				setService(updatedService);
 			} else {
 				console.error("Failed to fetch service:", result?.msg);
 			}
@@ -53,7 +52,7 @@ const ServiceSec = () => {
 											<div key={service._id} className="col-lg-4 mb-4">
 												<div className="post-card">
 													<a href={`/singleservice/${service._id}`} className="img d-block th-280">
-														<img src={service.image} alt={service.title} className="img-cover" />
+														<img src={imgUrl+service.image} alt={service.title} className="img-cover" />
 													</a>
 													<div className="info pt-30">
 														<h6 className="title fsz-24 text-capitalize mb-20">

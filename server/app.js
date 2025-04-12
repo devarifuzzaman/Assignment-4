@@ -47,7 +47,7 @@ const limiter = rateLimit({windowMs:REQUEST_LIMIT_TIME,max:REQUEST_LIMIT_NUMBER}
 app.set('etag',WEB_CACHE);
  // Set API Route
 app.use("/api",router);
-app.use("/upload-file", express.static("uploads"));
+app.use("/api/upload-file", express.static("uploads"));
 
 
 export default app;

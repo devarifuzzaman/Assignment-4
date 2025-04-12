@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { GetBlog, baseURL } from "../Api/ApiRoute.js";
+import { GetBlog, imgUrl } from "../Api/ApiRoute.js";
 
 const BlogSection = () => {
 	const [blogs, setBlogs] = useState([]);
@@ -15,8 +15,7 @@ const BlogSection = () => {
 			const result = await GetBlog();
 			if (result) {
 				const updatedBlogs = result.data.map(blog => ({
-					...blog,
-					image: blog.image ? `${baseURL.replace("/api", "/upload-file")}/${blog.image}` : "assets/img/default.jpg"
+					...blog
 				}));
 				setBlogs(updatedBlogs);
 			} else {
@@ -53,7 +52,7 @@ const BlogSection = () => {
 								<div key={blog._id} className="col-lg-4 mb-4">
 									<div className="post-card">
 										<a href={`/singleBlog/${blog._id}`} className="img d-block th-280">
-											<img src={blog.image} alt={blog.title} className="img-cover" />
+											<img src={imgUrl+blog.image} alt={blog.title} className="img-cover" />
 										</a>
 										<div className="info pt-30">
 											<h6 className="title fsz-24 text-capitalize mb-20">
